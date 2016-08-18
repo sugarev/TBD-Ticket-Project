@@ -19,14 +19,26 @@
                 </button>
                 @Html.ActionLink("TBD-Ticket Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
+        @if (Request.IsAuthenticated)
+        { 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
                     <li>@Html.ActionLink("New Post", "Create", "Posts")</li>
                 </ul>
+                
                 @Html.Partial("_LoginPartial")
             </div>
+        }  
+        else
+        {
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+        }
         </div>
     </div>
     <div class="container body-content">
