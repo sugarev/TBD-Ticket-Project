@@ -16,7 +16,7 @@ namespace TBD_Ticket_Project.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string Title { get; set; }
 
