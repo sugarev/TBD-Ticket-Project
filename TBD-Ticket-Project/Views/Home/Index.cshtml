@@ -12,7 +12,9 @@
     @foreach (var item in Model)
     {
         <article class="col-md-4">
-            <h2>@item.Title</h2>
+            <h2>
+                <a href="/Posts/Details/@item.Id">@TBD_Ticket_Project.Classes.Utils.CutText(item.Title, 40)</a>
+            </h2>
             <div>
                 Created on <i>@item.Date</i>
                 by
@@ -26,7 +28,7 @@
                 }
             </div>
             <p>
-                @item.Body
+                @TBD_Ticket_Project.Classes.Utils.CutText(item.Body) 
             </p>
         </article>
     }
