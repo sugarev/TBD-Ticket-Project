@@ -16,7 +16,7 @@ namespace TBD_Ticket_Project.Controllers
         {
             var latestPosts = db.Posts.Include(p => p.Author)
                                       .OrderByDescending(p => p.Date)
-                                      .Take(3); 
+                                      .Take(5); 
             return View(latestPosts);
         }
 
