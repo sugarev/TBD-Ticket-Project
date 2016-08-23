@@ -23,7 +23,16 @@
                     @Html.ActionLink("TBD-Ticket Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 }
             </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
+                        <li>@Html.ActionLink("New Post", "Create", "Posts")</li>
+                    </ul>
 
+<<<<<<< HEAD
             @if (Request.IsAuthenticated)
             {
                 <div class="navbar-collapse collapse">
@@ -33,6 +42,8 @@
                         <li>@Html.ActionLink("Notes", "Index", "Note")</li>
                     </ul>
 
+=======
+>>>>>>> origin/master
                     @Html.Partial("_LoginPartial")
                 </div>
             }
