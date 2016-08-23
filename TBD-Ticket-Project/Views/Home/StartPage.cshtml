@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TBD_Ticket_Project.Models.Project>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Ticket Controller Super Tool</h1>
+</div>
+
+<section class="row">
+    @foreach (var item in Model)
+    {
+        <article class="col-md-4">
+            <h2>
+                <a href="/Project/Details/@item.Id">@TBD_Ticket_Project.Classes.Utils.CutText(item.Name, 40)</a>
+            </h2>
+            <div>
+                Created on <i>@item.Date</i>
+                by
+                @if (@item.Author != null)
+                {
+                    <i>@item.Author.LastName</i>
+                }
+                else
+                {
+                    <i>No Author</i>
+                }
+            </div>
+            <p>
+                @TBD_Ticket_Project.Classes.Utils.CutText(item.Description)
+            </p>
+        </article>
+    }
+
+</section>

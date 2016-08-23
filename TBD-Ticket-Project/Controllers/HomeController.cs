@@ -14,18 +14,19 @@ namespace TBD_Ticket_Project.Controllers
 
         public ActionResult Index()
         {
-            var latestPosts = db.Posts.Include(p => p.Author)
-                                      .OrderByDescending(p => p.Date)
-                                      .Take(3); 
-            return View(latestPosts);
+            //var latestProjects = db.Projects.Include(p => p.Author)
+            //                        .OrderByDescending(p => p.Date);
+            return View();
         }
 
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
+        public ActionResult StartPage()
+        {
+            ViewBag.Message = "Your application description page.";
+            var latestProjects = db.Projects.Include(p => p.Author)
+                                    .OrderByDescending(p => p.Date);
 
-        //    return View();
-        //}
+            return View(latestProjects);
+        }
 
         //public ActionResult Contact()
         //{

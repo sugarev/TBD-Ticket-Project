@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <meta name="description" content="The description of my page" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,28 +18,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("TBD-Ticket Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("TBD-Ticket Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
 
-        @if (Request.IsAuthenticated)
-        { 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
-                    <li>@Html.ActionLink("New Post", "Create", "Posts")</li>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                        <li>@Html.ActionLink("Issues", "Index", "Issue")</li>
+                        <li>@Html.ActionLink("Notes", "Index", "Note")</li>
+                    </ul>
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                 </ul>
-                
-                @Html.Partial("_LoginPartial")
-            </div>
-        }  
-        else
-        {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-        }
+            }
         </div>
     </div>
     <div class="container body-content">

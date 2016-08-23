@@ -6,9 +6,9 @@ using System.Web;
 
 namespace TBD_Ticket_Project.Models
 {
-    public class Post
+    public class Note
     {
-        public Post()
+        public Note()
         {
             this.Date = DateTime.Now; 
         }
@@ -16,9 +16,8 @@ namespace TBD_Ticket_Project.Models
         [Key]
         public int Id { get; set; }
 
-        //[Required]
-        [StringLength(200)]
-        public string Title { get; set; }
+        [Required]
+        public int IssueId { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
@@ -28,7 +27,5 @@ namespace TBD_Ticket_Project.Models
         public DateTime Date { get; set; }
 
         public ApplicationUser Author { get; set; }
-
-        public int? CommentsCount { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace TBD_Ticket_Project.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 
@@ -18,6 +18,10 @@ namespace TBD_Ticket_Project.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TBD_Ticket_Project.Models.Post> Posts { get; set; }
+        public System.Data.Entity.DbSet<TBD_Ticket_Project.Models.Project> Projects { get; set; }
+
+        public System.Data.Entity.DbSet<TBD_Ticket_Project.Models.Note> Notes { get; set; }
+
+        public System.Data.Entity.DbSet<TBD_Ticket_Project.Models.Issue> Issues { get; set; }
     }
 }

@@ -456,7 +456,7 @@ namespace TBD_Ticket_Project.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("StartPage", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

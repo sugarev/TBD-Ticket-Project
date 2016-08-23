@@ -10,116 +10,108 @@ using TBD_Ticket_Project.Models;
 
 namespace TBD_Ticket_Project.Controllers
 {
-    public class PostsController : Controller
+    public class NoteController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Posts
+        // GET: Note
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.Author).ToList();
-            return View(posts);
+            return View(db.Notes.ToList());
         }
 
-        // GET: Posts/Details/5
+        // GET: Note/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Note note = db.Notes.Find(id);
+            if (note == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(note);
         }
 
-        // GET: Posts/Create
-        [Authorize]
+        // GET: Note/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Posts/Create
+        // POST: Note/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateInput(false)]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body")] Post post)
+        public ActionResult Create([Bind(Include = "Id,IssueId,Body,Date")] Note note)
         {
             if (ModelState.IsValid)
             {
-                post.Author = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-                db.Posts.Add(post);
+                note.Author = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+                db.Notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(post);
+            return View(note);
         }
 
-        // GET: Posts/Edit/5
-        [Authorize]
+        // GET: Note/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Note note = db.Notes.Find(id);
+            if (note == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(note);
         }
 
-        // POST: Posts/Edit/5
+        // POST: Note/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateInput(false)]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Body,Date")] Post post)
+        public ActionResult Edit([Bind(Include = "Id,IssueId,Body,Date")] Note note)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Entry(note).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(post);
+            return View(note);
         }
 
-        // GET: Posts/Delete/5
+        // GET: Note/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Note note = db.Notes.Find(id);
+            if (note == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(note);
         }
 
-        // POST: Posts/Delete/5
+        // POST: Note/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
+            Note note = db.Notes.Find(id);
+            db.Notes.Remove(note);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

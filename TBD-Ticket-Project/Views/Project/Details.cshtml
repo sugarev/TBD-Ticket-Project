@@ -1,4 +1,4 @@
-﻿@model TBD_Ticket_Project.Models.Post
+﻿@model TBD_Ticket_Project.Models.Project
 
 @{
     ViewBag.Title = "Details";
@@ -7,23 +7,23 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Post</h4>
+    <h4>Project</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Body)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Body)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
@@ -37,11 +37,7 @@
     </dl>
 </div>
 <p>
-
-    @if (User.IsInRole("Administrators"))
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) @:|
-    }
-
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("New Issue", "Create", "Issue", new { id = Model.Id })
 </p>
