@@ -35,6 +35,9 @@
         </dd>
 
     </dl>
+    <div>
+        @{Html.RenderAction("Create", "Issue");}
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

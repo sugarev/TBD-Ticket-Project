@@ -14,11 +14,6 @@ namespace TBD_Ticket_Project
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<
-                    ApplicationDbContext, 
-                    Migrations.Configuration>()
-                    );
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

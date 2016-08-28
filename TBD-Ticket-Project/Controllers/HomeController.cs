@@ -14,16 +14,7 @@ namespace TBD_Ticket_Project.Controllers
 
         public ActionResult Index()
         {
-<<<<<<< HEAD
-            //var latestProjects = db.Projects.Include(p => p.Author)
-            //                        .OrderByDescending(p => p.Date);
             return View();
-=======
-            var latestPosts = db.Posts.Include(p => p.Author)
-                                      .OrderByDescending(p => p.Date)
-                                      .Take(5); 
-            return View(latestPosts);
->>>>>>> origin/master
         }
 
         public ActionResult StartPage()

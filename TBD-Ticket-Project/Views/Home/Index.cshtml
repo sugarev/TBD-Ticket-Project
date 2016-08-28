@@ -7,35 +7,9 @@
 </div>
 
 <section class="row">
-<<<<<<< HEAD
     <h2>
         Welcome to our app
     </h2>
     @Html.ActionLink("Start", "StartPage", "Home")
-=======
-    @foreach (var item in Model)
-    {
-        <article class="dl-horizontal">
-            <h2>
-                <a href="/Posts/Details/@item.Id">@TBD_Ticket_Project.Classes.Utils.CutText(item.Title, 40)</a>
-            </h2>
-            <div>
-                Created on <i>@item.Date</i>
-                by
-                @if (@item.Author != null)
-                {
-                    <i>@item.Author.LastName (@item.Author.UserName)</i>
-                }
-                else
-                {
-                    <i>No Author</i>
-                }
-            </div>
-            <p>
-                @TBD_Ticket_Project.Classes.Utils.CutText(item.Body) 
-            </p>
-        </article>
-    }
->>>>>>> origin/master
 
 </section>
